@@ -1,0 +1,149 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="./fidus.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript" src="./updateDashboard.js"></script>
+<script type="text/javascript" src="./etary.js"></script>
+<script type="text/javascript" src="./popover.js"></script>
+<script type="text/javascript" src="./daily-visits.js"></script>
+<script type="text/javascript" src="./hourly-visits.js"></script>
+<script type="text/javascript" src="./sex.js"></script>
+<script type="text/javascript" src="./visits.js"></script>
+</head>
+
+<body>
+
+<h1>Visitas del día</h1>
+ 
+<table>
+  <tr>
+    <th>Cliente existente</th>
+    <th>Nombre | Apellido | Mail</th>
+    <th>Acción</th>
+  </tr>
+
+
+<div class="container" style="width:100%">
+    <div class="row">
+      <div class="btn-group btn-group-justified">
+            <div id="totalVisitsButton" class="btn-group" onclick="#">
+            <a href="#" data-toggle="popover" title="Visitas totales" data-content="Estos son los clientes totales(nuevos y recurrentes) en el periodo seleccionado">
+                <button type="button" class="btn btn-nav">
+                    <span class="glyphicon glyphicon-user"></span>
+              <h4>Visitas totales</h4>
+              <h3 id="totalVisits">200</h3>
+                </button></a>
+            </div>
+
+            <div id="newClientsButton" class="btn-group" onclick="#">
+              <a href="#" data-toggle="popover" title="Clientes nuevos" data-content="Estos son los clientes nuevos en el periodo seleccionado">
+                <button type="button" class="btn btn-nav">
+                    <span class="glyphicon glyphicon-time"></span>
+              <h4>Clientes nuevos</h4>
+
+              <h3 id="newClients"> 200</h3>
+                </button></a>
+            </div>
+            
+
+            <div id="visitsPerClientButton" class="btn-group" onclick="#">
+              <a href="#" data-toggle="popover" title="Viistas por cliente" data-content="En promedio tus clientes visitaron esta cantidad de veces tu local en el periodo seleccionado">
+                <button type="button" class="btn btn-nav">
+                    <span class="glyphicon glyphicon-usd"></span>
+                    <h4>Visitas por cliente</h4>
+
+                    <h3 id="visitsPerClient">200</h3>
+                </button>
+              </a>
+            </div>
+
+
+            <div id="timeBetweenVisitsButton" class="btn-group" onclick="#">
+              <a href="#" data-toggle="popover" title="Tiempo entre visita" data-content="El tiempo entre visita promedio en el periodo seleccionado">
+                <button type="button" class="btn btn-nav">
+                    <span class="glyphicon glyphicon-cog"></span>
+              <h4>Tiempo entre visita</h4>
+
+              <h3 id="timeBetweenVisits">200</h3>
+                </button>
+              </a>
+            </div>
+
+            <div id="rewardsButton" class="btn-group" onclick="#">
+              <a href="#" data-toggle="popover" title="Recompensas canjeadas totales" data-content="            La cantidad total de recompensas canjeadas en el periodo seleccionado">
+                <button type="button" class="btn btn-nav">
+                    <span class="glyphicon glyphicon-question-sign"></span>
+              <h4>Recompensas</h4>
+
+              <h3 id="rewards">200</h3>
+                </button>
+              </a>
+            </div>
+            
+        </div>
+  </div>
+</div>
+
+<form action="">
+<div class="container" style="width:100%; margin-top:-30px;">
+    <div class="row">
+      <div class="btn-group btn-group-justified">
+            <div id="totalVisitsButton" class="btn-group" onclick="#">
+                <button type="button" class="btn btn-nav">
+              <h4>Ultimos</h4>
+              <h1 class="dayslabel">7 Dias</h1>
+              <input type="radio" name="update" value="7" onclick="updateDashboard(this.value)" style="color: transparent;">
+                </button>
+            </div>
+
+            <div id="newClientsButton" class="btn-group" onclick="#">
+                <button type="button" class="btn btn-nav">
+              <h4>Ultimos</h4>
+              <h1 class="dayslabel">30 Dias</h1>
+              <input type="radio" name="update" value="30" onclick="updateDashboard(this.value)">
+                </button>
+            </div>
+            
+
+            <div id="visitsPerClientButton" class="btn-group" onclick="#">
+                <button type="button" class="btn btn-nav">
+                    <h4>Ultimos</h4>
+                    <h1 class="dayslabel">90 Dias</h1>
+                <input type="radio" name="update" value="90" onclick="updateDashboard(this.value)">
+                </button>
+            </div>
+      </div>
+    </div>            
+</div>
+</form>
+
+
+
+<div class="top-stats-container">
+  <div id="sex" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+  <br><br>
+  <div id="dailyvisits" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<div id="sex" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+<br><br>
+<div id="etary" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+<br><br>
+<div id="dailyvisits" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br><br>
+  <div id="etary" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+  <br><br>
+</div>
+
+<div id="hourlyvisits" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br><br>
+<div id="newcustomers" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+</body>
+</html>
